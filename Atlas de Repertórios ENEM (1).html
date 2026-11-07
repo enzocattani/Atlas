@@ -1,0 +1,1032 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Atlas de Repertórios ENEM</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=Public+Sans:wght@400;500;600&display=swap">
+<style>
+/* Layout: mapa mental em árvore (núcleo ao centro, 5 eixos à esquerda, 4 à direita; coluna única no celular) + abas de estudo. */
+:root{
+  --bg:#E7EBF1; --surface:#F7F8FA; --surface-2:#EDF0F5; --ink:#17233A; --muted:#566178;
+  --line:#CBD3E0; --line-strong:#9FB0C9;
+  --navy:#132B52; --on-navy:#F2F5FA;
+  --blue:#2F66A3; --on-blue:#FFFFFF; --blue-ink:#2A5D96;
+  --gold:#C29A3F; --gold-ink:#7C5E15;
+  --green:#4C7F68; --green-ink:#2F6350;
+  --bad:#9B3B3B;
+  --f-display:'Newsreader',Georgia,'Times New Roman',serif;
+  --f-body:'Public Sans',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#0D1420; --surface:#152033; --surface-2:#1B2A41; --ink:#E4E9F2; --muted:#9BA8BD;
+    --line:#26364F; --line-strong:#3E5578;
+    --navy:#1C3A6B; --on-navy:#F2F5FA;
+    --blue:#3C6FAE; --on-blue:#FFFFFF; --blue-ink:#7FAEE3;
+    --gold:#D4AF5C; --gold-ink:#E0C27E;
+    --green:#5E9A82; --green-ink:#8CC5AB;
+    --bad:#E08A8A;
+    color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0D1420; --surface:#152033; --surface-2:#1B2A41; --ink:#E4E9F2; --muted:#9BA8BD;
+  --line:#26364F; --line-strong:#3E5578;
+  --navy:#1C3A6B; --on-navy:#F2F5FA;
+  --blue:#3C6FAE; --on-blue:#FFFFFF; --blue-ink:#7FAEE3;
+  --gold:#D4AF5C; --gold-ink:#E0C27E;
+  --green:#5E9A82; --green-ink:#8CC5AB;
+  --bad:#E08A8A;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:15px;line-height:1.55;-webkit-text-size-adjust:100%}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--navy);z-index:60}
+button{font:inherit;color:inherit;cursor:pointer}
+h1,h2,h3,h4,p,ul,ol{margin:0}
+ul,ol{padding:0;list-style:none}
+:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+.wrap{max-width:1280px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+svg{display:block}
+
+/* ---------- Cabeçalho ---------- */
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:40;background:var(--navy);color:var(--on-navy)}
+.top-in{display:flex;flex-wrap:wrap;align-items:center;gap:6px 24px;padding-block:10px 0}
+.brand{display:flex;flex-direction:column;line-height:1.1;margin-right:auto}
+.eyebrow{font-size:11px;letter-spacing:.14em;text-transform:uppercase;opacity:.75}
+.brand strong{font-family:var(--f-display);font-size:22px;font-weight:600;letter-spacing:.005em}
+.hprog{font-size:12.5px;opacity:.85;font-variant-numeric:tabular-nums}
+.tabs{display:flex;gap:2px;overflow-x:auto;width:100%;scrollbar-width:none;order:3}
+.tabs::-webkit-scrollbar{display:none}
+.tab{background:none;border:0;border-bottom:3px solid transparent;color:var(--on-navy);opacity:.72;padding:10px 12px 9px;font-size:14px;font-weight:500;white-space:nowrap;border-radius:0}
+.tab:hover{opacity:1}
+.tab.on{opacity:1;border-bottom-color:var(--gold)}
+@media (min-width:760px){.tabs{width:auto;order:0}.top-in{flex-wrap:nowrap;padding-block:0}.tab{padding:20px 14px 17px}}
+
+/* ---------- Ferramentas ---------- */
+.tools{display:flex;flex-direction:column;gap:10px;padding-top:18px}
+.srch{position:relative;display:block}
+.srch svg{position:absolute;left:12px;top:50%;transform:translateY(-50%);width:17px;height:17px;color:var(--muted)}
+.srch input{width:100%;font:inherit;font-size:15px;color:var(--ink);background:var(--surface);border:1px solid var(--line-strong);border-radius:10px;padding:11px 14px 11px 38px}
+.srch input::placeholder{color:var(--muted)}
+.chips{display:flex;gap:6px;overflow-x:auto;padding-bottom:4px;scrollbar-width:thin}
+.chip{flex:0 0 auto;background:var(--surface);border:1px solid var(--line-strong);color:var(--ink);border-radius:999px;padding:5px 12px;font-size:13px;white-space:nowrap}
+.chip:hover{border-color:var(--blue-ink)}
+.chip.on{background:var(--navy);border-color:var(--navy);color:var(--on-navy)}
+.chip.sm{padding:3px 10px;font-size:12px}
+.chip.kw{background:var(--surface-2);border-color:var(--line);cursor:default}
+.row{display:flex;flex-wrap:wrap;align-items:center;gap:8px 10px}
+.btn{background:var(--surface);border:1px solid var(--line-strong);color:var(--ink);border-radius:8px;padding:6px 12px;font-size:13px;font-weight:500}
+.btn:hover{border-color:var(--blue-ink)}
+.btn.pri{background:var(--navy);border-color:var(--navy);color:var(--on-navy)}
+.btn[aria-pressed="true"]{background:color-mix(in srgb,var(--blue) 16%,var(--surface));border-color:var(--blue-ink);color:var(--blue-ink)}
+.count{margin-left:auto;font-size:13px;color:var(--muted);font-variant-numeric:tabular-nums}
+.focus-chip{display:inline-flex;align-items:center;gap:6px}
+
+/* ---------- Seções ---------- */
+.view{padding-block:18px 96px}
+.lead{color:var(--muted);max-width:62ch;margin-bottom:14px}
+.legend{display:flex;flex-wrap:wrap;gap:6px 16px;font-size:12.5px;color:var(--muted);margin-bottom:6px}
+.legend span{display:inline-flex;align-items:center;gap:6px}
+.sw{width:14px;height:14px;border-radius:4px;display:inline-block}
+.sw.n{background:var(--navy)}.sw.b{background:var(--blue)}
+.sw.g{border:1.5px solid var(--gold);background:color-mix(in srgb,var(--gold) 14%,var(--surface))}
+.sw.v{background:color-mix(in srgb,var(--green) 22%,var(--surface));border:1px solid var(--green)}
+.ic{width:13px;height:13px;color:var(--gold)}
+.tools-map{margin:10px 0 4px}
+.empty{padding:28px 16px;text-align:center;color:var(--muted);background:var(--surface);border:1px dashed var(--line-strong);border-radius:10px;margin-top:14px}
+
+/* ---------- Mapa mental ---------- */
+.mm{display:flex;flex-direction:column;margin-top:14px}
+.core{background:var(--navy);color:var(--on-navy);border:0;border-radius:14px;padding:18px 18px 16px;text-align:center;position:relative;scroll-margin-top:130px;margin-bottom:10px}
+.core h2{font-family:var(--f-display);font-weight:500;font-size:19px;line-height:1.25;letter-spacing:.06em;text-transform:uppercase}
+.core h2 span{display:block;font-size:26px;font-weight:600;letter-spacing:.1em;margin-bottom:3px}
+.core p{margin-top:8px;font-size:12.5px;opacity:.8;letter-spacing:.04em}
+.col{display:flex;flex-direction:column}
+.br{position:relative;padding:6px 0 6px 22px}
+.br::before{content:"";position:absolute;left:0;top:0;bottom:0;border-left:2px solid var(--line-strong)}
+.br.b-first::before{top:29px}
+.br.b-last::before{bottom:auto;height:29px}
+.br::after{content:"";position:absolute;left:0;top:29px;width:22px;border-top:2px solid var(--line-strong)}
+.br-node{display:flex;align-items:center;justify-content:space-between;gap:10px;width:100%;min-height:46px;text-align:left;background:var(--blue);color:var(--on-blue);border:0;border-radius:10px;padding:8px 12px 8px 14px}
+.br-node:hover{filter:brightness(1.08)}
+.br-name{font-family:var(--f-display);font-size:17px;font-weight:600;line-height:1.2}
+.br-meta{display:flex;align-items:center;gap:8px;font-size:12px;opacity:.92;font-variant-numeric:tabular-nums;flex:0 0 auto}
+.br-meta svg{width:16px;height:16px;transition:transform .2s}
+.br.collapsed .br-meta svg{transform:rotate(-90deg)}
+.kids{display:flex;flex-direction:column;gap:8px;margin:8px 0 2px 16px}
+.br.collapsed .kids{display:none}
+.kids li{position:relative;padding-left:18px}
+.kids li::before{content:"";position:absolute;left:0;top:-4px;bottom:-4px;border-left:2px solid var(--line-strong)}
+.kids li:first-child::before{top:-8px}
+.kids li:last-child::before{bottom:50%}
+.kids li::after{content:"";position:absolute;left:0;top:50%;width:18px;border-top:2px solid var(--line-strong)}
+.br.off{display:none}
+.br.dim .br-node{opacity:.45}
+.rep{position:relative;display:block;width:100%;text-align:left;background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:8px 40px 8px 12px;color:var(--ink);transition:border-color .15s,opacity .15s}
+.rep:hover{border-color:var(--blue-ink)}
+.rep.jur{border:1.5px solid var(--gold);background:color-mix(in srgb,var(--gold) 9%,var(--surface))}
+.rep-n1{display:block;font-size:13.5px;font-weight:600;line-height:1.3}
+.rep-n2{display:block;font-size:12px;color:var(--muted);line-height:1.35}
+.bdg{position:absolute;top:7px;right:8px;display:flex;gap:4px;align-items:center}
+.bdg .star{width:12px;height:12px;color:var(--gold)}
+.bdg .chk{width:14px;height:14px;color:var(--green-ink);display:none}
+.rep.done .chk{display:block}
+.rep:not(.top) .star{display:none}
+.mx{display:none;margin-top:4px;font-size:11px;font-weight:600;color:var(--blue-ink)}
+.show-multi .rep.multi{box-shadow:0 0 0 1px color-mix(in srgb,var(--blue-ink) 55%,transparent)}
+.show-multi .rep.multi3{box-shadow:0 0 0 3px color-mix(in srgb,var(--blue-ink) 60%,transparent)}
+.show-multi .rep.multi3 .mx{color:var(--on-blue);background:var(--blue);padding:1px 7px;border-radius:4px;display:inline-block}
+.show-multi .rep.multi .mx{display:block}
+.rep.dim{opacity:.28}
+.rep.dim:hover{opacity:.7}
+
+@media (min-width:1080px){
+  .mm{display:grid;grid-template-columns:minmax(0,1fr) 210px minmax(0,1fr);column-gap:30px;align-items:center}
+  .core{margin:0}
+  .core::before,.core::after{content:"";position:absolute;top:50%;width:30px;border-top:2px solid var(--line-strong)}
+  .core::before{left:-30px}.core::after{right:-30px}
+  .br::before{top:0;bottom:0;height:auto}
+  .br.b-first::before,.br.b-last::before{top:0;bottom:0;height:auto}
+  .br.c-first::before{top:50%}
+  .br.c-last::before{bottom:50%;height:auto}
+  .br::after{top:50%}
+  .br-row{display:flex;align-items:center}
+  .br-node{flex:0 0 162px;width:162px}
+  .kids{position:relative;margin:0 0 0 26px;flex:1 1 auto;min-width:0}
+  .kids::before{content:"";position:absolute;left:-26px;width:26px;top:50%;border-top:2px solid var(--line-strong)}
+  .kids li:first-child::before{top:50%}
+  /* coluna esquerda espelhada */
+  .col.l .br{padding:6px 22px 6px 0}
+  .col.l .br::before{left:auto;right:0}
+  .col.l .br::after{left:auto;right:0}
+  .col.l .br-row{flex-direction:row-reverse}
+  .col.l .kids{margin:0 26px 0 0}
+  .col.l .kids::before{left:auto;right:-26px}
+  .col.l .kids li{padding:0 18px 0 0}
+  .col.l .kids li::before{left:auto;right:0}
+  .col.l .kids li::after{left:auto;right:0}
+  .col.l .rep{text-align:right;padding:8px 12px 8px 40px}
+  .col.l .bdg{right:auto;left:8px}
+}
+
+/* ---------- Prioridade ---------- */
+.prio{margin-top:34px;padding-top:22px;border-top:1px solid var(--line)}
+.sec-h{font-family:var(--f-display);font-size:24px;font-weight:600;line-height:1.2;text-wrap:balance}
+.prio .lead{margin:6px 0 14px}
+.prio-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:8px}
+.pr{display:flex;flex-direction:column;gap:2px;text-align:left;background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:10px 12px}
+.pr:hover{border-color:var(--gold)}
+.pr b{font-size:14px;font-weight:600;display:flex;gap:8px;align-items:baseline}
+.pr b i{font-style:normal;font-family:var(--f-display);color:var(--gold-ink);font-size:15px}
+.pr span{font-size:12.5px;color:var(--muted)}
+
+/* ---------- Cartões ---------- */
+.grp{margin-bottom:28px}
+.grp-h{display:flex;align-items:baseline;gap:12px;padding-bottom:8px;border-bottom:2px solid var(--navy);margin-bottom:10px}
+.grp-h h3{font-family:var(--f-display);font-size:22px;font-weight:600;line-height:1.2}
+.grp-h .p{margin-left:auto;font-size:12.5px;color:var(--green-ink);font-variant-numeric:tabular-nums;white-space:nowrap}
+.cards{display:flex;flex-direction:column;gap:8px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:10px;min-width:0}
+.card.jur{border-color:var(--gold)}
+.card-head{display:flex;align-items:center;gap:12px;width:100%;text-align:left;background:none;border:0;padding:12px 14px;border-radius:10px}
+.ch-main{flex:1;min-width:0;display:flex;flex-direction:column;gap:3px}
+.ch-name{font-family:var(--f-display);font-size:17.5px;font-weight:600;line-height:1.25}
+.ch-sub{display:flex;flex-wrap:wrap;gap:6px;align-items:center;font-size:12px;color:var(--muted)}
+.tag{display:inline-flex;align-items:center;gap:4px;font-size:11px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;padding:1px 7px;border-radius:5px;background:var(--surface-2);color:var(--muted)}
+.tag.jur{background:color-mix(in srgb,var(--gold) 20%,var(--surface));color:var(--gold-ink)}
+.tag.top{background:none;border:1px solid var(--gold);color:var(--gold-ink)}
+.card-head>svg{width:18px;height:18px;color:var(--muted);flex:0 0 auto;transition:transform .2s}
+.card.open .card-head>svg{transform:rotate(180deg)}
+.panel{padding:2px 14px 16px;display:flex;flex-direction:column;gap:14px}
+.sections{display:flex;flex-direction:column;gap:14px}
+.sec h4{font-size:11.5px;font-weight:600;letter-spacing:.09em;text-transform:uppercase;color:var(--blue-ink);margin-bottom:4px;display:flex;flex-wrap:wrap;gap:4px 10px;align-items:baseline}
+.sec h4 em{font-style:normal;font-weight:500;letter-spacing:0;text-transform:none;color:var(--muted)}
+.sec p{max-width:68ch}
+.sec.app{background:color-mix(in srgb,var(--green) 11%,var(--surface));border:1px solid color-mix(in srgb,var(--green) 40%,var(--surface));border-radius:8px;padding:10px 12px}
+.sec.app h4{color:var(--green-ink)}
+.sec.app .ex{font-family:var(--f-display);font-size:16.5px;line-height:1.55}
+.nota{margin-top:8px;font-size:13.5px;color:var(--muted);border-left:2px solid var(--line-strong);padding-left:10px}
+.kw{display:flex;flex-wrap:wrap;gap:6px}
+.link{background:none;border:0;padding:0;color:var(--blue-ink);text-decoration:underline;text-underline-offset:3px;font-size:14px}
+.card-foot{display:flex;gap:8px;flex-wrap:wrap}
+.done-btn[aria-pressed="true"]{background:color-mix(in srgb,var(--green) 20%,var(--surface));border-color:var(--green);color:var(--green-ink)}
+.reveal-bar{display:none;align-items:center;gap:10px;flex-wrap:wrap;font-size:13px;color:var(--muted)}
+.review .rcard:not(.revealed) .reveal-bar{display:flex}
+.review .rcard:not(.revealed) .sections{display:none}
+
+/* ---------- Gaveta ---------- */
+.drawer{position:fixed;inset:0;z-index:70;display:none}
+.drawer.on{display:block}
+.scrim{position:absolute;inset:0;background:color-mix(in srgb,var(--navy) 55%,transparent)}
+.sheet{position:absolute;left:0;right:0;bottom:0;max-height:90%;overflow:auto;background:var(--surface);border-radius:16px 16px 0 0;padding:0 max(16px,env(safe-area-inset-left,0px)) calc(20px + env(safe-area-inset-bottom,0px));border-top:3px solid var(--blue)}
+.sheet.jur{border-top-color:var(--gold)}
+.sheet-top{position:sticky;top:0;background:var(--surface);display:flex;align-items:center;justify-content:space-between;gap:10px;padding:12px 0 8px;z-index:2}
+.xbtn{width:36px;height:36px;display:grid;place-items:center;border-radius:8px;background:var(--surface-2);border:1px solid var(--line)}
+.xbtn svg{width:16px;height:16px}
+.sheet h3{font-family:var(--f-display);font-size:24px;line-height:1.2;font-weight:600;margin:4px 0 8px;text-wrap:balance}
+.sheet-meta{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:14px}
+.sheet-nav{display:flex;justify-content:space-between;gap:10px;margin-top:18px;padding-top:12px;border-top:1px solid var(--line)}
+.sheet-nav .btn{max-width:48%;text-align:left}
+@media (min-width:720px){
+  .sheet{left:auto;top:0;width:min(480px,100%);max-height:none;border-radius:0;border-top:0;border-left:3px solid var(--blue);padding-right:max(20px,env(safe-area-inset-right,0px));padding-left:20px}
+  .sheet.jur{border-left-color:var(--gold)}
+}
+
+/* ---------- Botão núcleo ---------- */
+.fab{position:fixed;right:max(16px,env(safe-area-inset-right,0px));bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:30;display:none;align-items:center;gap:6px;background:var(--navy);color:var(--on-navy);border:0;border-radius:999px;padding:10px 16px;font-size:13px;font-weight:600;box-shadow:0 4px 14px rgba(0,0,0,.25)}
+.fab.on{display:inline-flex}
+.fab svg{width:15px;height:15px;transform:rotate(180deg)}
+
+/* ---------- Guia ---------- */
+.strip{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:8px;margin:14px 0 26px}
+.strip div{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:10px 12px;font-size:13px;color:var(--muted)}
+.strip b{display:block;font-family:var(--f-display);font-size:16px;color:var(--ink);font-weight:600}
+.strip div.j{border-color:var(--gold)}
+.steps{display:flex;flex-direction:column;gap:22px}
+.step{display:grid;grid-template-columns:minmax(0,1fr);gap:12px;padding-top:18px;border-top:1px solid var(--line)}
+.step-n{font-family:var(--f-display);font-size:34px;line-height:1;color:var(--gold-ink);font-weight:500}
+.step h3{font-family:var(--f-display);font-size:21px;line-height:1.25;font-weight:600;text-wrap:balance}
+.step p{max-width:64ch}
+.formula{font-size:13.5px;background:var(--surface-2);border-radius:8px;padding:8px 12px;color:var(--ink)}
+.formula b{color:var(--blue-ink);font-weight:600}
+.model{background:color-mix(in srgb,var(--green) 11%,var(--surface));border:1px solid color-mix(in srgb,var(--green) 40%,var(--surface));border-radius:8px;padding:10px 14px}
+.model h4{font-size:11.5px;letter-spacing:.09em;text-transform:uppercase;color:var(--green-ink);font-weight:600;margin-bottom:4px}
+.model p{font-family:var(--f-display);font-size:16.5px;line-height:1.6}
+.model mark{background:color-mix(in srgb,var(--gold) 30%,transparent);color:inherit;padding:0 2px;border-radius:2px}
+.check{display:flex;flex-direction:column;gap:8px;margin-top:2px}
+.check li{padding-left:22px;position:relative;max-width:64ch}
+.check li::before{content:"";position:absolute;left:2px;top:.55em;width:8px;height:8px;border-radius:2px;background:var(--gold)}
+.check li.no::before{background:var(--bad)}
+@media (min-width:900px){
+  .step{grid-template-columns:230px minmax(0,1fr);column-gap:32px}
+  .step-head{grid-row:1/span 3}
+}
+.step-body{display:flex;flex-direction:column;gap:12px;min-width:0}
+
+/* ---------- Treinamento ---------- */
+.seg{display:flex;gap:6px;overflow-x:auto;padding-bottom:6px;margin-bottom:16px;scrollbar-width:thin}
+.panelx{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:18px 16px;max-width:760px}
+.q-kind{font-size:11.5px;letter-spacing:.09em;text-transform:uppercase;color:var(--blue-ink);font-weight:600;margin-bottom:6px}
+.q-text{font-family:var(--f-display);font-size:21px;line-height:1.35;font-weight:500;margin-bottom:12px;text-wrap:balance}
+.clue{font-family:var(--f-display);font-size:17px;line-height:1.5;background:var(--surface-2);border-radius:8px;padding:10px 14px;margin-bottom:12px;color:var(--ink)}
+.opts{display:flex;flex-direction:column;gap:8px}
+.opt{text-align:left;background:var(--bg);border:1px solid var(--line-strong);border-radius:8px;padding:10px 14px;font-size:14.5px}
+.opt:hover:not(:disabled){border-color:var(--blue-ink)}
+.opt:disabled{cursor:default}
+.opt.ok{border-color:var(--green);background:color-mix(in srgb,var(--green) 18%,var(--surface));color:var(--ink)}
+.opt.bad{border-color:var(--bad);background:color-mix(in srgb,var(--bad) 14%,var(--surface))}
+.fb{margin-top:14px;font-size:14.5px;display:flex;flex-direction:column;gap:8px}
+.fb .res{font-weight:600}
+.fb .res.ok{color:var(--green-ink)}.fb .res.bad{color:var(--bad)}
+.q-foot{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:16px;padding-top:12px;border-top:1px solid var(--line);font-size:13px;color:var(--muted);font-variant-numeric:tabular-nums}
+.fc-front{text-align:center;padding:22px 8px}
+.fc-front .n1{font-family:var(--f-display);font-size:26px;font-weight:600;line-height:1.2}
+.fc-front .n2{color:var(--muted);margin-top:4px}
+.fc-ax{font-size:12px;letter-spacing:.09em;text-transform:uppercase;color:var(--blue-ink);font-weight:600;margin-bottom:8px}
+.fc-actions{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-top:12px}
+.bars{display:flex;flex-direction:column;gap:14px}
+.bar-row{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:4px 12px;align-items:baseline}
+.bar-row span{font-size:14px}
+.bar-row b{font-size:13px;font-weight:600;color:var(--green-ink);font-variant-numeric:tabular-nums}
+.bar{grid-column:1/-1;height:8px;border-radius:4px;background:var(--surface-2);overflow:hidden}
+.bar i{display:block;height:100%;background:var(--green);border-radius:4px}
+.tot{font-family:var(--f-display);font-size:34px;font-weight:600;margin-bottom:12px}
+.tot small{font-family:var(--f-body);font-size:14px;color:var(--muted);font-weight:400;margin-left:6px}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+</style>
+
+<header class="top">
+  <div class="wrap top-in">
+    <div class="brand"><span class="eyebrow">ENEM · Redação</span><strong>Atlas de Repertórios</strong></div>
+    <span class="hprog" id="hprog"></span>
+    <nav class="tabs" role="tablist" aria-label="Seções">
+      <button class="tab on" role="tab" id="tab-mapa" data-act="tab" data-tab="mapa" aria-selected="true">Mapa</button>
+      <button class="tab" role="tab" id="tab-cartoes" data-act="tab" data-tab="cartoes" aria-selected="false">Cartões</button>
+      <button class="tab" role="tab" id="tab-guia" data-act="tab" data-tab="guia" aria-selected="false">Como utilizar</button>
+      <button class="tab" role="tab" id="tab-treino" data-act="tab" data-tab="treino" aria-selected="false">Treinamento</button>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+  <div class="tools" id="tools">
+    <label class="srch"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="9" cy="9" r="6"/><path d="M14 14l4 4"/></svg>
+      <input id="q" type="search" placeholder="Buscar por nome, autor ou palavra-chave" autocomplete="off" aria-label="Buscar repertórios"></label>
+    <div class="chips" id="axchips" role="group" aria-label="Filtrar por eixo"></div>
+    <div class="row">
+      <button class="btn" id="tg-multi" data-act="multi" aria-pressed="false" title="Contorno fino: serve em mais de um eixo. Contorno grosso: serve em 4 ou mais eixos.">Destacar multi-eixo</button>
+      <button class="btn" id="tg-review" data-act="review" aria-pressed="false">Modo revisão</button>
+      <span id="focuschip"></span>
+      <button class="btn" data-act="clear" id="clearbtn" hidden>Limpar filtros</button>
+      <span class="count" id="count"></span>
+    </div>
+  </div>
+
+  <!-- MAPA -->
+  <section class="view" id="v-mapa">
+    <p class="lead">Toque em um eixo para abrir ou fechar seus quatro repertórios. Toque em um repertório para ler a explicação completa.</p>
+    <div class="legend">
+      <span><i class="sw n"></i>Núcleo</span>
+      <span><i class="sw b"></i>Eixo temático</span>
+      <span><i class="sw g"></i>Repertório jurídico</span>
+      <span><svg class="ic" viewBox="0 0 20 20" fill="currentColor"><path d="M10 1.5l2.6 5.5 6 .7-4.4 4.1 1.2 6L10 14.9 4.6 17.8l1.2-6L1.4 7.7l6-.7z"/></svg>Prioridade de memorização</span>
+      <span><i class="sw v"></i>Aplicação prática (nos cartões)</span>
+    </div>
+    <div class="row tools-map">
+      <button class="btn" data-act="expandall">Expandir tudo</button>
+      <button class="btn" data-act="collapseall">Recolher tudo</button>
+    </div>
+    <div class="mm" id="mm">
+      <button class="core" id="core" data-act="core" aria-label="Núcleo: ENEM, banco de repertórios socioculturais">
+        <h2><span>ENEM</span>Banco de repertórios socioculturais</h2>
+        <p>9 eixos · 36 repertórios</p>
+      </button>
+      <div class="col l" id="colL"></div>
+      <div class="col r" id="colR"></div>
+    </div>
+    <div class="empty" id="empty-map" hidden>Nenhum repertório encontrado com esses filtros. <button class="link" data-act="clear">Limpar filtros</button></div>
+
+    <div class="prio">
+      <h2 class="sec-h">Prioridade de memorização</h2>
+      <p class="lead">Não vale decorar os 36 com a mesma intensidade. Estes dez têm maior poder de aplicação em temas diferentes. Toque para destacá-los no mapa.</p>
+      <div class="prio-grid" id="priogrid"></div>
+    </div>
+  </section>
+
+  <!-- CARTÕES -->
+  <section class="view" id="v-cartoes" hidden>
+    <p class="lead">Os 36 repertórios organizados por eixo. Abra um cartão para ver contextualização, aplicabilidade, exemplo de uso na redação e palavras-chave.</p>
+    <div class="row tools-map">
+      <button class="btn" data-act="cardsopen">Abrir todos</button>
+      <button class="btn" data-act="cardsclose">Fechar todos</button>
+    </div>
+    <div id="cardsroot"></div>
+    <div class="empty" id="empty-cards" hidden>Nenhum repertório encontrado com esses filtros. <button class="link" data-act="clear">Limpar filtros</button></div>
+  </section>
+
+  <!-- GUIA -->
+  <section class="view" id="v-guia" hidden>
+    <h2 class="sec-h">Como utilizar os repertórios na redação</h2>
+    <p class="lead" style="margin-top:6px">O repertório só vale quando cumpre uma função no texto. O exemplo abaixo usa o tema "Desafios para garantir educação de qualidade a todos os brasileiros" e três repertórios deste atlas. Os parágrafos são textos ilustrativos escritos para estudo, sem citações literais dos autores.</p>
+    <div class="strip">
+      <div class="j"><b>Introdução</b>Repertório jurídico e tese</div>
+      <div><b>Desenvolvimento 1</b>Obra filosófica ou sociológica</div>
+      <div><b>Desenvolvimento 2</b>Outro repertório</div>
+      <div class="j"><b>Conclusão</b>Retoma a contradição e propõe</div>
+    </div>
+    <ol class="steps">
+      <li class="step">
+        <div class="step-head"><div class="step-n">1</div><h3>Introduzir um repertório jurídico</h3></div>
+        <div class="step-body">
+          <p>Abra com a lei ou o artigo que garante o direito em discussão. Explique em uma frase o que ele estabelece e mostre onde a realidade o contradiz. Essa contradição sustenta a tese.</p>
+          <div class="formula"><b>Fórmula:</b> repertório jurídico → o que estabelece → contraste com a realidade → tese com dois fatores.</div>
+          <div class="model"><h4>Exemplo de introdução</h4><p><mark>O Art. 205 da Constituição Federal de 1988</mark> estabelece a educação como direito de todos e dever do Estado e da família. Entretanto, no Brasil, essa garantia convive com a evasão escolar e com a desigualdade de acesso, o que revela um descompasso entre a lei e a realidade. Nesse contexto, a desigualdade socioeconômica e um modelo de ensino centrado na transmissão de conteúdos mantêm o problema.</p></div>
+          <p>Repertórios jurídicos funcionam bem na introdução, mas não ficam restritos a ela. Você pode abrir com uma lei e recorrer a obras filosóficas ou sociológicas nos desenvolvimentos.</p>
+        </div>
+      </li>
+      <li class="step">
+        <div class="step-head"><div class="step-n">2</div><h3>Relacionar uma obra filosófica ou sociológica à primeira tese</h3></div>
+        <div class="step-body">
+          <p>Escolha o autor cuja ideia explica a causa anunciada na tese. Apresente o conceito com suas palavras, diga o que ele significa e só então ligue ao tema.</p>
+          <div class="formula"><b>Fórmula:</b> autor e conceito → explicação própria → conectivo de ligação → efeito no tema.</div>
+          <div class="model"><h4>Exemplo de desenvolvimento 1</h4><p>Em primeiro lugar, as condições econômicas e culturais das famílias influenciam o desempenho escolar. Segundo o sociólogo <mark>Pierre Bourdieu</mark>, o capital cultural, formado por conhecimentos, hábitos e recursos transmitidos no meio familiar, favorece a reprodução das desigualdades sociais. Dessa forma, estudantes com menos acesso a esses recursos enfrentam desvantagens que a escola, ao tratar todos como iguais, nem sempre compensa. Assim, o direito previsto em lei fica restrito a quem já parte de uma posição privilegiada.</p></div>
+        </div>
+      </li>
+      <li class="step">
+        <div class="step-head"><div class="step-n">3</div><h3>Utilizar outro repertório para fundamentar a segunda tese</h3></div>
+        <div class="step-body">
+          <p>Use uma fonte diferente da primeira, de preferência de outra natureza: uma obra, um fato histórico ou um documento. A segunda tese trata de outra causa, então o repertório também precisa responder a ela.</p>
+          <div class="formula"><b>Fórmula:</b> segunda causa → repertório distinto → explicação → consequência para o tema.</div>
+          <div class="model"><h4>Exemplo de desenvolvimento 2</h4><p>Além disso, o modelo pedagógico predominante em muitas escolas limita a formação cidadã. <mark>Paulo Freire</mark> chama de educação bancária a prática em que o estudante é tratado como receptor passivo de informações. Nesse sentido, uma escola que apenas transmite conteúdos não desenvolve autonomia nem senso crítico, o que enfraquece o vínculo do aluno com os estudos e o exercício pleno da cidadania.</p></div>
+        </div>
+      </li>
+      <li class="step">
+        <div class="step-head"><div class="step-n">4</div><h3>Retomar a contradição inicial na conclusão</h3></div>
+        <div class="step-body">
+          <p>Volte ao repertório da introdução sem repeti-lo palavra por palavra. Mostre que as duas teses explicam a distância entre o texto legal e a realidade, e feche com a proposta de intervenção: agente, ação, meio, finalidade e detalhamento.</p>
+          <div class="formula"><b>Fórmula:</b> retomada da contradição → síntese das teses → agente + ação + meio + finalidade + detalhamento.</div>
+          <div class="model"><h4>Exemplo de conclusão</h4><p>Portanto, a distância entre <mark>o Art. 205 e a realidade escolar brasileira</mark> decorre da desigualdade de oportunidades e de uma educação pouco crítica. Cabe ao Ministério da Educação, em parceria com as secretarias estaduais e municipais, ampliar programas de permanência estudantil e de apoio a alunos em vulnerabilidade, por meio de bolsas, material didático e reforço escolar, a fim de que o direito previsto na Constituição se torne efetivo.</p></div>
+        </div>
+      </li>
+      <li class="step">
+        <div class="step-head"><div class="step-n">5</div><h3>Evitar repertórios decorativos e citações sem função</h3></div>
+        <div class="step-body">
+          <p>Para cada repertório, faça três coisas: conhecer a referência, explicar seu significado e estabelecer uma relação lógica com o tema. Isso vale mais do que citar nomes famosos. Na Competência 2, o repertório é avaliado quanto à legitimidade, à pertinência ao tema e ao uso produtivo.</p>
+          <ul class="check">
+            <li><b>Teste da remoção.</b> Se você tirar o repertório e o parágrafo continuar igual, ele era decorativo.</li>
+            <li class="no">Nome citado sem explicação do conceito.</li>
+            <li class="no">Autor que não responde ao problema do tema, escolhido só por ser conhecido.</li>
+            <li class="no">O mesmo repertório repetido em vários parágrafos sem avançar o raciocínio.</li>
+            <li class="no">Frase entre aspas atribuída a um autor sem certeza de que ele a escreveu. Na dúvida, parafraseie a ideia e não invente citações.</li>
+            <li>Distinga o que o autor afirma da leitura que você faz. Ao aplicar Bauman à saúde mental, por exemplo, deixe claro que é uma interpretação.</li>
+          </ul>
+        </div>
+      </li>
+    </ol>
+  </section>
+
+  <!-- TREINAMENTO -->
+  <section class="view" id="v-treino" hidden>
+    <h2 class="sec-h">Treinamento de memorização</h2>
+    <p class="lead" style="margin-top:6px">Escolha um exercício. As respostas certas e as marcações "dominado" ficam salvas neste navegador e alimentam o indicador de progresso por eixo.</p>
+    <div class="seg" id="seg"></div>
+    <div id="trbody"></div>
+  </section>
+</main>
+
+<button class="fab" id="fab" data-act="core2" aria-label="Voltar ao núcleo do mapa"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 8l5 5 5-5"/></svg>Núcleo</button>
+
+<div class="drawer" id="drawer" aria-hidden="true">
+  <div class="scrim" data-act="closedrawer"></div>
+  <div class="sheet" id="sheet" role="dialog" aria-modal="true" aria-labelledby="sheetTitle">
+    <div class="sheet-top">
+      <span class="tag" id="sheetAx"></span>
+      <button class="xbtn" id="drawerClose" data-act="closedrawer" aria-label="Fechar"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 4l12 12M16 4L4 16"/></svg></button>
+    </div>
+    <div id="sheetBody"></div>
+  </div>
+</div>
+
+<script>
+/* ========= DADOS ========= */
+const AXES=[
+{id:1,nome:'Educação',curto:'Educação'},
+{id:2,nome:'Saúde e bem-estar',curto:'Saúde'},
+{id:3,nome:'Tecnologia e comunicação',curto:'Tecnologia'},
+{id:4,nome:'Meio ambiente e sustentabilidade',curto:'Meio ambiente'},
+{id:5,nome:'Desigualdade social e cidadania',curto:'Desigualdade'},
+{id:6,nome:'Cultura e identidade nacional',curto:'Cultura'},
+{id:7,nome:'Política, democracia e direitos humanos',curto:'Política'},
+{id:8,nome:'Trabalho e economia',curto:'Trabalho'},
+{id:9,nome:'Violência e segurança pública',curto:'Violência'}];
+
+/* R(id, tipo, área, n1, n2, autor, obra, conteúdo da fonte, aplicabilidade, exemplo de redação, palavras-chave, outros eixos, nota, nome completo) */
+function R(id,t,area,n1,n2,autor,obra,orig,usar,redacao,chaves,outros,nota,nome){
+  return {id:id,e:parseInt(id,10),t:t,area:area,n1:n1,n2:n2,autor:autor,obra:obra,orig:orig,usar:usar,redacao:redacao,chaves:chaves,outros:outros||[],nota:nota||'',
+    nome:nome||(n1.indexOf('Constituição')===0?'Constituição Federal de 1988 — '+n2:n1+' — '+n2),fam:n1.indexOf('Constituição')===0?'cf':''};
+}
+const REPS=[
+/* 1 Educação */
+R('1.1','jur','Jurídico · Constituição','Constituição Federal','Art. 205',null,null,
+ 'Estabelece a educação como direito de todos e dever do Estado e da família. O texto liga a educação ao pleno desenvolvimento da pessoa, ao preparo para a cidadania e à qualificação para o trabalho.',
+ 'Demonstrar a contradição entre a garantia constitucional e problemas como evasão escolar, desigualdade de acesso e precariedade do ensino.',
+ 'O Art. 205 da Constituição Federal de 1988 assegura a educação como direito de todos e dever do Estado e da família. Contudo, a evasão escolar e a desigualdade de acesso revelam que essa garantia ainda não se converteu em prática para parte da população.',
+ ['direito de todos','dever do Estado','evasão escolar','desigualdade de acesso'],[5,7]),
+R('1.2','fil','Educação · Pensamento pedagógico','Paulo Freire','Pedagogia do Oprimido','Paulo Freire','Pedagogia do Oprimido',
+ 'O educador critica o modelo de educação bancária, no qual o estudante é tratado como receptor passivo de informações. Em contraposição, defende uma educação que dialoga com a realidade de quem aprende e forma sujeitos críticos.',
+ 'Discutir a necessidade de uma educação crítica, emancipadora e capaz de desenvolver autonomia intelectual.',
+ 'Na perspectiva de Paulo Freire, a educação bancária reduz o aluno a receptor passivo de conteúdos. Quando a escola se limita a transmitir informações, deixa de formar cidadãos capazes de analisar e transformar a realidade em que vivem.',
+ ['educação bancária','autonomia','criticidade','emancipação'],[5,6,7]),
+R('1.3','fil','Educação · Pensamento pedagógico','Anísio Teixeira','Escola Pública e Democracia','Anísio Teixeira','Escola Pública e Democracia',
+ 'Defendia a educação pública, gratuita e democrática como instrumento de transformação social. É um dos grandes nomes do pensamento educacional brasileiro.',
+ 'Argumentar que a desigualdade educacional compromete a igualdade de oportunidades e a própria democracia.',
+ 'Anísio Teixeira defendia a escola pública como base de uma sociedade democrática. Logo, quando a qualidade do ensino varia conforme a renda, a igualdade de oportunidades se enfraquece e, com ela, a própria democracia.',
+ ['escola pública','democracia','igualdade de oportunidades','transformação social'],[5,7],
+ 'O título segue o material de estudo. Na prova, o mais seguro é citar o autor e a ideia central (educação pública como direito e base da democracia) e explicá-la com suas palavras.'),
+R('1.4','soc','Sociologia','Pierre Bourdieu','Capital Cultural','Pierre Bourdieu','Capital Cultural',
+ 'O sociólogo francês explica como as diferenças de acesso a conhecimentos, hábitos e recursos culturais favorecem a reprodução das desigualdades sociais.',
+ 'Demonstrar por que estudantes de famílias economicamente privilegiadas podem apresentar vantagens no ambiente escolar.',
+ 'Segundo o sociólogo Pierre Bourdieu, o capital cultural, formado por conhecimentos, hábitos e recursos simbólicos, é distribuído desigualmente e favorece quem já o possui. Assim, a escola, ao tratar igualmente estudantes em condições desiguais, pode reproduzir as diferenças sociais que deveria atenuar.',
+ ['capital cultural','reprodução social','desigualdade','herança familiar'],[5,6]),
+/* 2 Saúde */
+R('2.1','jur','Jurídico · Constituição','Constituição Federal','Art. 196',null,null,
+ 'Determina que a saúde é direito de todos e dever do Estado. O artigo associa esse direito a políticas sociais e econômicas e ao acesso universal e igualitário aos serviços, e fundamenta o SUS.',
+ 'Apontar a distância entre a garantia constitucional e a dificuldade de acesso aos serviços de saúde.',
+ 'O Art. 196 da Constituição Federal define a saúde como direito de todos e dever do Estado. No entanto, as filas de espera e a falta de profissionais em muitas regiões mostram a distância entre o texto legal e o atendimento que chega à população.',
+ ['direito à saúde','dever do Estado','SUS','acesso universal'],[5]),
+R('2.2','x','Organismo internacional','Organização Mundial da Saúde','Conceito de saúde',null,null,
+ 'O organismo da ONU voltado à saúde compreende saúde como um estado de bem-estar físico, mental e social, e não apenas como ausência de doenças.',
+ 'Ampliar a discussão sobre saúde mental, qualidade de vida, prevenção e condições sociais.',
+ 'Para a Organização Mundial da Saúde, saúde é um estado de bem-estar físico, mental e social, e não apenas a ausência de doenças. Por isso, discutir saúde exige considerar também moradia, renda, lazer e saúde mental.',
+ ['bem-estar','saúde mental','prevenção','condições sociais'],[5,8]),
+R('2.3','fil','Filosofia','Michel Foucault','Biopolítica','Michel Foucault','Biopolítica',
+ 'O filósofo analisa como o poder político atua sobre a vida das populações, incluindo práticas de controle, organização e gestão dos corpos.',
+ 'Discutir negligência sanitária, políticas públicas de saúde e desigualdades no atendimento populacional.',
+ 'Michel Foucault chama de biopolítica a forma de poder que administra a vida das populações. Nesse sentido, quando o Estado negligencia o saneamento ou o atendimento básico, certos grupos ficam mais expostos ao adoecimento.',
+ ['biopolítica','poder','gestão dos corpos','políticas públicas'],[9,5],
+ 'Aplicação interpretativa. Foucault descreve o poder sobre a vida das populações; a ligação com negligência sanitária é uma leitura sua para a redação.'),
+R('2.4','soc','Sociologia','Zygmunt Bauman','Modernidade Líquida','Zygmunt Bauman','Modernidade Líquida',
+ 'O sociólogo polonês analisa a fragilidade das relações e a instabilidade da sociedade contemporânea.',
+ 'Relacionar individualismo, insegurança e relações sociais frágeis a problemas de saúde mental.',
+ 'O conceito de modernidade líquida, de Zygmunt Bauman, descreve relações sociais frágeis e instáveis. Esse cenário de insegurança e isolamento pode ser relacionado, como leitura possível, ao aumento do sofrimento psíquico.',
+ ['modernidade líquida','vínculos frágeis','individualismo','insegurança'],[3,8],
+ 'É uma aplicação interpretativa, não uma afirmação de que Bauman formulou uma teoria clínica.'),
+/* 3 Tecnologia */
+R('3.1','jur','Jurídico · Constituição','Constituição Federal','Art. 5º, X',null,null,
+ 'Protege a intimidade, a vida privada, a honra e a imagem das pessoas e assegura indenização em caso de violação.',
+ 'Discutir exposição indevida, vazamento de dados, cyberbullying e violação de privacidade.',
+ 'O inciso X do Art. 5º da Constituição Federal protege a intimidade, a vida privada, a honra e a imagem. Todavia, o vazamento de dados e o cyberbullying mostram que esses direitos seguem ameaçados no ambiente digital.',
+ ['privacidade','intimidade','honra e imagem','vazamento de dados','cyberbullying'],[7]),
+R('3.2','jur','Jurídico · Lei','Marco Civil da Internet','Lei 12.965/2014',null,null,
+ 'Estabelece princípios, garantias, direitos e deveres para o uso da internet no Brasil. É frequentemente chamado de "constituição da internet".',
+ 'Discutir a necessidade de regulamentação, proteção de direitos e responsabilidade no ambiente digital.',
+ 'O Marco Civil da Internet (Lei nº 12.965/2014) fixa princípios, direitos e deveres para o uso da rede no Brasil. Ainda assim, a circulação de conteúdos ofensivos e falsos mostra a necessidade de aplicar essas regras e de educar para o uso responsável.',
+ ['regulamentação','direitos digitais','responsabilidade','internet'],[7]),
+R('3.3','soc','Sociologia','Manuel Castells','Sociedade em Rede','Manuel Castells','Sociedade em Rede',
+ 'O sociólogo espanhol analisa como as tecnologias de informação transformaram a organização econômica, política e social.',
+ 'Demonstrar como o acesso à informação se tornou essencial para a participação social, mas também pode aprofundar desigualdades.',
+ 'Manuel Castells descreve a sociedade em rede, na qual a informação e as redes digitais organizam a economia, a política e a cultura. Por essa razão, quem não tem acesso à internet fica à margem da participação social, o que pode aprofundar desigualdades.',
+ ['sociedade em rede','acesso à informação','exclusão digital','participação social'],[5,7,8]),
+R('3.4','lit','Literatura','George Orwell','1984','George Orwell','1984',
+ 'O romance apresenta uma sociedade submetida à vigilância e ao controle da informação.',
+ 'Estabelecer uma analogia com vigilância digital, manipulação informacional e ameaças à liberdade individual.',
+ 'No romance 1984, de George Orwell, o Estado vigia os cidadãos e controla a informação. Por analogia, a coleta massiva de dados e a manipulação de conteúdos nas redes levantam o risco de restrição da liberdade individual.',
+ ['vigilância','controle da informação','distopia','liberdade individual'],[7],
+ 'Obra de ficção. O uso na redação é uma analogia com a realidade atual, não uma análise social do autor.'),
+/* 4 Meio ambiente */
+R('4.1','jur','Jurídico · Constituição','Constituição Federal','Art. 225',null,null,
+ 'Garante o direito ao meio ambiente ecologicamente equilibrado e estabelece o dever do poder público e da coletividade de preservá-lo para as gerações presentes e futuras.',
+ 'Evidenciar a contradição entre proteção ambiental constitucional e práticas de degradação.',
+ 'O Art. 225 da Constituição Federal garante o direito ao meio ambiente ecologicamente equilibrado. Entretanto, o desmatamento e a poluição indicam que o dever de preservação ainda não é cumprido na prática.',
+ ['ambiente equilibrado','dever de preservar','gerações futuras','degradação'],[5]),
+R('4.2','fil','Filosofia','Hans Jonas','O Princípio Responsabilidade','Hans Jonas','O Princípio Responsabilidade',
+ 'O filósofo alemão defende que o desenvolvimento tecnológico deve considerar suas consequências para as gerações futuras.',
+ 'Discutir sustentabilidade, exploração de recursos naturais e responsabilidade intergeracional.',
+ 'Hans Jonas defende que o poder da tecnologia exige responsabilidade com as gerações futuras. Dessa forma, explorar recursos naturais sem medir as consequências compromete o direito das próximas gerações a um planeta habitável.',
+ ['responsabilidade','gerações futuras','tecnologia','sustentabilidade'],[3]),
+R('4.3','x','Movimento social','Chico Mendes','Movimento dos Seringueiros',null,null,
+ 'O ambientalista brasileiro, líder seringueiro assassinado em 1988, tornou-se símbolo da defesa da floresta amazônica e das populações tradicionais.',
+ 'Relacionar preservação ambiental à proteção dos povos que dependem diretamente dos ecossistemas.',
+ 'A trajetória de Chico Mendes, líder dos seringueiros, mostra que proteger a floresta é também proteger as populações que vivem dela. Por isso, políticas ambientais devem incluir as comunidades tradicionais.',
+ ['seringueiros','Amazônia','povos da floresta','defesa ambiental'],[5]),
+R('4.4','his','História · Marco internacional','Conferência de Estocolmo','1972',null,null,
+ 'Marco internacional da discussão ambiental, realizado pela ONU, que contribuiu para consolidar a questão ecológica na agenda política mundial.',
+ 'Demonstrar que a preservação ambiental exige cooperação internacional e políticas públicas permanentes.',
+ 'Desde a Conferência de Estocolmo, em 1972, a questão ambiental ocupa a agenda política mundial. Isso demonstra que problemas como a poluição exigem cooperação entre países e políticas contínuas.',
+ ['cooperação internacional','agenda ambiental','ONU','políticas permanentes'],[7],'','Conferência de Estocolmo de 1972'),
+/* 5 Desigualdade */
+R('5.1','jur','Jurídico · Constituição','Constituição Federal','Art. 5º',null,null,
+ 'Estabelece a igualdade perante a lei e assegura direitos fundamentais a todos.',
+ 'Demonstrar que a igualdade formal não significa necessariamente igualdade material de oportunidades.',
+ 'O Art. 5º da Constituição Federal estabelece que todos são iguais perante a lei. Entretanto, a igualdade formal não garante, por si só, igualdade de oportunidades, como mostram as disparidades de renda e de acesso a serviços.',
+ ['igualdade formal','igualdade material','direitos fundamentais','cidadania'],[1,2,6,7,9]),
+R('5.2','lit','Literatura · Obra de referência','Gilberto Dimenstein','O Cidadão de Papel','Gilberto Dimenstein','O Cidadão de Papel',
+ 'A obra discute a distância entre os direitos assegurados juridicamente e a realidade de crianças e adolescentes brasileiros.',
+ 'Demonstrar como direitos formalmente existentes podem não ser efetivamente garantidos.',
+ 'Na obra O Cidadão de Papel, Gilberto Dimenstein discute a distância entre os direitos garantidos em lei e a realidade de crianças e adolescentes brasileiros. Assim, a existência de normas não basta: é preciso que políticas públicas as tornem efetivas.',
+ ['cidadania','direitos no papel','infância e adolescência','efetividade'],[1,2,7,9]),
+R('5.3','fil','Filosofia · Economia política','Karl Marx','Luta de Classes','Karl Marx','Luta de Classes',
+ 'O filósofo alemão analisa os conflitos entre classes sociais e a desigualdade produzida pelas relações econômicas.',
+ 'Explicar a concentração de renda, a exploração do trabalho e a reprodução das desigualdades estruturais.',
+ 'Para Karl Marx, as sociedades são marcadas pelo conflito entre classes sociais. Sob essa perspectiva, a concentração de renda e a exploração do trabalho reproduzem desigualdades estruturais.',
+ ['classes sociais','conflito','concentração de renda','desigualdade estrutural'],[8]),
+R('5.4','x','Geografia','Milton Santos','Por uma Outra Globalização','Milton Santos','Por uma Outra Globalização',
+ 'O geógrafo brasileiro questiona os efeitos desiguais da globalização e a concentração dos benefícios econômicos e tecnológicos.',
+ 'Discutir exclusão econômica, desigualdade regional e concentração de oportunidades.',
+ 'Em Por uma Outra Globalização, Milton Santos questiona os efeitos desiguais da globalização, cujos benefícios econômicos e tecnológicos se concentram em poucos grupos e regiões. Por isso, a exclusão e as desigualdades regionais persistem no Brasil.',
+ ['globalização','exclusão','desigualdade regional','concentração'],[3,6,8]),
+/* 6 Cultura */
+R('6.1','jur','Jurídico · Constituição','Constituição Federal','Art. 215',null,null,
+ 'Garante o pleno exercício dos direitos culturais e o acesso às fontes da cultura nacional, e cabe ao Estado apoiar e incentivar a valorização e a difusão das manifestações culturais.',
+ 'Discutir a falta de acesso a museus, teatros, bibliotecas e outras manifestações culturais.',
+ 'O Art. 215 da Constituição Federal garante o pleno exercício dos direitos culturais e o acesso às fontes da cultura nacional. Contudo, a escassez de museus, teatros e bibliotecas em muitas cidades limita esse direito.',
+ ['direitos culturais','acesso à cultura','cultura nacional','difusão cultural'],[5]),
+R('6.2','soc','Antropologia','Darcy Ribeiro','O Povo Brasileiro','Darcy Ribeiro','O Povo Brasileiro',
+ 'O antropólogo brasileiro analisa a formação histórica e cultural do país, marcada pela miscigenação e por conflitos entre diferentes matrizes culturais.',
+ 'Discutir identidade nacional, diversidade cultural, apagamento histórico e valorização dos povos indígenas e afro-brasileiros.',
+ 'Em O Povo Brasileiro, Darcy Ribeiro analisa a formação do país a partir da miscigenação e do encontro, muitas vezes conflituoso, entre matrizes culturais. Assim, valorizar a diversidade e combater o apagamento de povos indígenas e afro-brasileiros faz parte da defesa da identidade nacional.',
+ ['miscigenação','matrizes culturais','identidade nacional','diversidade'],[5,7]),
+R('6.3','soc','Sociologia','Pierre Bourdieu','Distinção','Pierre Bourdieu','Distinção',
+ 'O sociólogo demonstra como o consumo e as preferências culturais também refletem diferenças de classe social.',
+ 'Argumentar que o acesso à cultura não é distribuído igualmente, sendo condicionado pela renda e pela posição social.',
+ 'Em A Distinção, Pierre Bourdieu mostra que gostos e consumos culturais também expressam diferenças de classe. Assim, o acesso desigual a museus, teatros e livros não é mera questão de preferência, mas reflete a posição social.',
+ ['distinção','gosto','classe social','consumo cultural'],[1,5]),
+R('6.4','his','História · Movimento artístico','Semana de Arte Moderna','1922',null,null,
+ 'Movimento artístico realizado em São Paulo que buscou romper com padrões tradicionais e valorizar novas formas de expressão da identidade brasileira.',
+ 'Discutir valorização da produção cultural nacional, diversidade artística e reconhecimento de manifestações culturais marginalizadas.',
+ 'A Semana de Arte Moderna de 1922 buscou romper com padrões tradicionais e valorizar uma expressão artística brasileira. Esse marco ajuda a discutir a importância de reconhecer manifestações culturais que ainda permanecem marginalizadas.',
+ ['modernismo','ruptura','expressão nacional','1922'],[],'','Semana de Arte Moderna de 1922'),
+/* 7 Política */
+R('7.1','jur','Jurídico · Constituição','Constituição Federal','Art. 1º, parágrafo único',null,null,
+ 'Estabelece que todo poder emana do povo, que o exerce por meio de representantes eleitos ou diretamente.',
+ 'Discutir participação popular, representatividade política, cidadania e fortalecimento democrático.',
+ 'O parágrafo único do Art. 1º da Constituição Federal afirma que todo poder emana do povo. Contudo, a baixa participação popular e a desconfiança nas instituições enfraquecem esse princípio no cotidiano democrático.',
+ ['soberania popular','representatividade','participação','cidadania'],[5]),
+R('7.2','fil','Filosofia política','Montesquieu','O Espírito das Leis','Montesquieu','O Espírito das Leis',
+ 'O filósofo desenvolve a teoria da separação dos poderes como mecanismo de limitação do poder político.',
+ 'Discutir concentração de poder, autoritarismo, fiscalização institucional e equilíbrio entre Executivo, Legislativo e Judiciário.',
+ 'Na obra O Espírito das Leis, Montesquieu propõe a separação dos poderes para limitar o poder político. Dessa forma, a fiscalização mútua entre Executivo, Legislativo e Judiciário protege a sociedade contra abusos e concentração de poder.',
+ ['separação dos poderes','freios e contrapesos','limitação do poder','fiscalização'],[]),
+R('7.3','fil','Filosofia política','Hannah Arendt','As Origens do Totalitarismo','Hannah Arendt','As Origens do Totalitarismo',
+ 'A filósofa analisa as condições históricas e políticas que possibilitaram o surgimento de regimes totalitários.',
+ 'Discutir autoritarismo, fragilidade das instituições democráticas e violação de direitos fundamentais.',
+ 'Em As Origens do Totalitarismo, Hannah Arendt investiga as condições históricas que possibilitaram regimes totalitários. Por isso, instituições frágeis e violações de direitos fundamentais são sinais de alerta para qualquer democracia.',
+ ['totalitarismo','autoritarismo','instituições democráticas','direitos fundamentais'],[3,5,9]),
+R('7.4','jur','Documento internacional','Declaração Universal dos Direitos Humanos','1948',null,null,
+ 'Documento internacional, aprovado pela Assembleia Geral da ONU em 1948, que estabelece direitos fundamentais inerentes a todos os seres humanos.',
+ 'Demonstrar a universalidade dos direitos humanos e a necessidade de combater práticas discriminatórias e violações de dignidade.',
+ 'A Declaração Universal dos Direitos Humanos, de 1948, reconhece direitos inerentes a todos os seres humanos. Logo, práticas discriminatórias e violações de dignidade contrariam um princípio que deve valer em qualquer sociedade.',
+ ['dignidade humana','universalidade','direitos fundamentais','combate à discriminação'],[2,5,6,8,9],'','Declaração Universal dos Direitos Humanos — 1948'),
+/* 8 Trabalho */
+R('8.1','jur','Jurídico · Constituição','Constituição Federal','Art. 7º',null,null,
+ 'Estabelece direitos dos trabalhadores urbanos e rurais, incluindo proteção salarial, férias e limites de jornada.',
+ 'Discutir precarização trabalhista, informalidade e desrespeito às garantias laborais.',
+ 'O Art. 7º da Constituição Federal assegura direitos aos trabalhadores urbanos e rurais, como proteção salarial, férias e limites de jornada. Todavia, a informalidade e a precarização deixam muitos trabalhadores fora dessas garantias.',
+ ['direitos trabalhistas','jornada','informalidade','precarização'],[5]),
+R('8.2','fil','Filosofia · Economia política','Karl Marx','Mais-valia','Karl Marx','Mais-valia',
+ 'Conceito que explica a apropriação, pelo proprietário dos meios de produção, de parte do valor produzido pelo trabalhador.',
+ 'Discutir exploração econômica, desigualdade nas relações de trabalho e concentração de riqueza.',
+ 'Karl Marx formulou o conceito de mais-valia para explicar como o dono dos meios de produção se apropria de parte do valor criado pelo trabalhador. Por essa lente, jornadas extensas e baixos salários revelam relações de trabalho desiguais.',
+ ['mais-valia','exploração','meios de produção','concentração de riqueza'],[5]),
+R('8.3','x','Economia','Adam Smith','A Riqueza das Nações','Adam Smith','A Riqueza das Nações',
+ 'O economista escocês analisa a divisão do trabalho, a produtividade e o funcionamento dos mercados.',
+ 'Discutir desenvolvimento econômico, especialização profissional e produtividade, inclusive contrastando crescimento econômico com condições dignas de trabalho.',
+ 'Adam Smith, em A Riqueza das Nações, destaca a divisão do trabalho como fonte de produtividade. Entretanto, o crescimento econômico só se traduz em desenvolvimento quando acompanhado de condições dignas de trabalho.',
+ ['divisão do trabalho','produtividade','mercado','desenvolvimento econômico'],[]),
+R('8.4','his','História','Revolução Industrial','Processo histórico',null,null,
+ 'Processo histórico, iniciado na Inglaterra no século XVIII, de transformação da produção por meio da mecanização e da industrialização, que modificou profundamente as relações de trabalho.',
+ 'Estabelecer paralelos entre as transformações tecnológicas do passado e os desafios atuais da automação e da inteligência artificial.',
+ 'A Revolução Industrial transformou a produção e as relações de trabalho por meio da mecanização. De modo análogo, a automação e a inteligência artificial exigem hoje políticas de qualificação para evitar o desemprego e a precarização.',
+ ['mecanização','industrialização','automação','inteligência artificial'],[3,1,5],'','Revolução Industrial'),
+/* 9 Violência */
+R('9.1','jur','Jurídico · Constituição','Constituição Federal','Art. 144',null,null,
+ 'Estabelece a segurança pública como dever do Estado, direito e responsabilidade de todos, exercida por órgãos como as polícias.',
+ 'Discutir a insuficiência das políticas de segurança, a prevenção da criminalidade e a proteção da população.',
+ 'O Art. 144 da Constituição Federal define a segurança pública como dever do Estado e responsabilidade de todos. Entretanto, a insuficiência de políticas preventivas mostra que esse direito ainda não é plenamente garantido.',
+ ['segurança pública','dever do Estado','prevenção','responsabilidade coletiva'],[5]),
+R('9.2','fil','Filosofia política','Thomas Hobbes','Leviatã','Thomas Hobbes','Leviatã',
+ 'O filósofo defende a necessidade de um poder político capaz de estabelecer a ordem e evitar conflitos generalizados.',
+ 'Discutir o papel do Estado na garantia da segurança e na manutenção da ordem social.',
+ 'No Leviatã, Thomas Hobbes sustenta que um poder político forte é necessário para impor a ordem e evitar o conflito generalizado. Nessa linha, cabe ao Estado garantir a segurança, desde que respeite os direitos dos cidadãos.',
+ ['Estado','ordem social','estado de natureza','segurança'],[7]),
+R('9.3','fil','Filosofia','Michel Foucault','Vigiar e Punir','Michel Foucault','Vigiar e Punir',
+ 'A obra analisa historicamente as instituições disciplinares e as transformações das formas de punição e controle social.',
+ 'Discutir sistema prisional, ressocialização, encarceramento e limites do modelo exclusivamente punitivo.',
+ 'Em Vigiar e Punir, Michel Foucault analisa as instituições disciplinares e as mudanças nas formas de punição. Com base nessa leitura, é possível questionar um sistema prisional que pune e pouco ressocializa.',
+ ['disciplina','prisão','punição','controle social'],[7,5]),
+R('9.4','jur','Jurídico · Lei','Maria da Penha','Lei 11.340/2006',null,null,
+ 'Legislação que estabelece mecanismos para prevenir e combater a violência doméstica e familiar contra a mulher.',
+ 'Discutir violência de gênero, omissão institucional, proteção das vítimas e necessidade de políticas de prevenção.',
+ 'A Lei Maria da Penha (Lei nº 11.340/2006) cria mecanismos para prevenir e combater a violência doméstica e familiar contra a mulher. Todavia, a omissão institucional e a subnotificação mostram que a norma precisa de políticas de prevenção e acolhimento.',
+ ['violência doméstica','violência de gênero','proteção das vítimas','prevenção'],[5,7,2])
+];
+
+const TOP10=[
+{l:'Constituição Federal de 1988',s:'Direitos, deveres e contradições sociais.',ids:['1.1','2.1','3.1','4.1','5.1','6.1','7.1','8.1','9.1']},
+{l:'O Cidadão de Papel',s:'Distância entre direitos e realidade.',ids:['5.2']},
+{l:'Milton Santos',s:'Globalização e desigualdade.',ids:['5.4']},
+{l:'Pierre Bourdieu',s:'Reprodução das desigualdades.',ids:['1.4','6.3']},
+{l:'Paulo Freire',s:'Educação e emancipação.',ids:['1.2']},
+{l:'Karl Marx',s:'Estrutura econômica e relações sociais.',ids:['5.3','8.2']},
+{l:'Hannah Arendt',s:'Democracia e autoritarismo.',ids:['7.3']},
+{l:'Michel Foucault',s:'Instituições e mecanismos de poder.',ids:['2.3','9.3']},
+{l:'Hans Jonas',s:'Responsabilidade e futuro.',ids:['4.2']},
+{l:'Declaração Universal dos Direitos Humanos',s:'Dignidade e direitos fundamentais.',ids:['7.4']}];
+
+const THEMES=[
+{t:'Os impactos das redes sociais na saúde mental dos jovens brasileiros',ok:'2.2',bad:['9.2','8.3','6.4'],p:'O conceito ampliado de saúde permite tratar bem-estar mental e social como parte do direito à saúde. Bauman (2.4) também seria uma boa escolha, como leitura interpretativa.'},
+{t:'Os desafios para o enfrentamento da violência contra a mulher no Brasil',ok:'9.4',bad:['4.2','8.3','6.4'],p:'A lei trata diretamente do problema e permite apontar a distância entre a norma e a proteção efetiva das vítimas.'},
+{t:'A manipulação de informações e a vigilância na era digital',ok:'3.4',bad:['4.3','6.2','8.3'],p:'A distopia de Orwell serve como analogia para vigilância e controle da informação, desde que você deixe claro que é uma analogia.'},
+{t:'A preservação da Amazônia e a valorização das comunidades tradicionais',ok:'4.3',bad:['3.2','9.2','8.3'],p:'A trajetória do líder seringueiro liga a proteção da floresta à proteção de quem vive dela.'},
+{t:'A persistência da desigualdade no acesso à educação de qualidade',ok:'1.4',bad:['9.4','4.4','3.4'],p:'O capital cultural explica por que famílias com mais recursos culturais deixam os filhos em vantagem na escola. O Art. 205 (1.1) também funcionaria na introdução.'},
+{t:'A automação e os desafios do mercado de trabalho no século XXI',ok:'8.4',bad:['7.2','9.3','4.4'],p:'O paralelo histórico mostra que mudanças tecnológicas alteram as relações de trabalho e exigem políticas de adaptação.'},
+{t:'O sistema prisional brasileiro e a ressocialização',ok:'9.3',bad:['6.4','4.1','3.3'],p:'A análise das instituições disciplinares permite questionar um modelo que só pune e pouco ressocializa.'},
+{t:'A distância entre os direitos garantidos em lei e a realidade de crianças e adolescentes',ok:'5.2',bad:['4.2','6.4','8.3'],p:'A obra trata exatamente da diferença entre o direito formal e a vida real de crianças e adolescentes.'},
+{t:'O acesso desigual aos bens culturais no Brasil',ok:'6.3',bad:['9.2','8.3','4.4'],p:'A análise de Bourdieu mostra que o consumo cultural reflete a posição social, o que explica o acesso desigual a museus, teatros e livros.'}
+];
+</script>
+
+<script>
+/* ========= APLICATIVO ========= */
+const $=(s,r)=>(r||document).querySelector(s);
+const $$=(s,r)=>Array.from((r||document).querySelectorAll(s));
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const norm=s=>String(s).normalize('NFD').replace(/[̀-ͯ]/g,'').toLowerCase();
+const shuffle=a=>{a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));const t=a[i];a[i]=a[j];a[j]=t}return a};
+const pick=(a,n)=>shuffle(a).slice(0,n);
+const BY={},AX={};
+AXES.forEach(a=>AX[a.id]=a);
+TOP10.forEach(p=>p.ids.forEach(i=>{BY[i]=1}));
+const TOPSET=new Set(Object.keys(BY));
+REPS.forEach(r=>{BY[r.id]=r;r.top=TOPSET.has(r.id);r.idx=norm([r.nome,r.autor||'',r.obra||'',r.area,r.chaves.join(' '),r.orig,r.usar,AX[r.e].nome].join(' '))});
+const ICON={
+ chev:'<svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 8l5 5 5-5"/></svg>',
+ star:'<svg class="star" viewBox="0 0 20 20" fill="currentColor"><path d="M10 1.5l2.6 5.5 6 .7-4.4 4.1 1.2 6L10 14.9 4.6 17.8l1.2-6L1.4 7.7l6-.7z"/></svg>',
+ chk:'<svg class="chk" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10.5l4 4 8-9"/></svg>'
+};
+const state={tab:'mapa',q:'',axis:0,multi:false,review:false,focus:null,done:new Set(),revealed:new Set(),drawer:null,lastFocus:null};
+const KEY='atlas-repertorios-enem';
+function load(){try{const o=JSON.parse(localStorage.getItem(KEY)||'{}');if(Array.isArray(o.done))o.done.forEach(i=>{if(typeof BY[i]==='object')state.done.add(i)});state.multi=!!o.multi;state.review=!!o.review}catch(e){}}
+function save(){try{localStorage.setItem(KEY,JSON.stringify({done:Array.from(state.done),multi:state.multi,review:state.review}))}catch(e){}}
+const reduce=()=>window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+const wide=()=>window.matchMedia&&window.matchMedia('(min-width:1080px)').matches;
+
+/* ----- Construção do mapa ----- */
+function repLi(r){
+ return '<li><button class="rep'+(r.t==='jur'?' jur':'')+(r.top?' top':'')+(r.outros.length?' multi':'')+(r.outros.length>=3?' multi3':'')+'" data-act="rep" data-id="'+r.id+'">'+
+  '<span class="bdg">'+ICON.star+ICON.chk+'</span>'+
+  '<span class="rep-n1">'+esc(r.n1)+'</span><span class="rep-n2">'+esc(r.n2)+'</span>'+
+  (r.outros.length?'<span class="mx">Serve também em '+r.outros.length+(r.outros.length>1?' eixos':' eixo')+'</span>':'')+
+  '</button></li>';
+}
+function branchHTML(a){
+ const reps=REPS.filter(r=>r.e===a.id);
+ const cls=['br'];
+ if(a.id===1)cls.push('b-first');if(a.id===9)cls.push('b-last');
+ if(a.id===1||a.id===6)cls.push('c-first');if(a.id===5||a.id===9)cls.push('c-last');
+ return '<div class="'+cls.join(' ')+'" data-axis="'+a.id+'"><div class="br-row">'+
+  '<button class="br-node" data-act="branch" data-axis="'+a.id+'" aria-expanded="true" aria-controls="k'+a.id+'">'+
+  '<span class="br-name">'+esc(a.nome)+'</span><span class="br-meta"><span data-prog="'+a.id+'">0/4</span>'+ICON.chev+'</span></button>'+
+  '<ul class="kids" id="k'+a.id+'">'+reps.map(repLi).join('')+'</ul></div></div>';
+}
+function buildMap(){
+ $('#colL').innerHTML=AXES.slice(0,5).map(branchHTML).join('');
+ $('#colR').innerHTML=AXES.slice(5).map(branchHTML).join('');
+ const open=wide();
+ $$('.br').forEach(b=>setBranch(b,open));
+}
+function setBranch(b,open){
+ b.classList.toggle('collapsed',!open);
+ const n=$('.br-node',b);n.setAttribute('aria-expanded',open?'true':'false');
+}
+
+/* ----- Cartões ----- */
+function areaTags(r){
+ return (r.t==='jur'?'<span class="tag jur">Jurídico</span>':'')+(r.top?'<span class="tag top">Prioridade</span>':'')+'<span>'+esc(r.area)+'</span>';
+}
+function cardBody(r){
+ const others=r.outros.map(i=>'<button class="chip sm" data-act="axisf" data-axis="'+i+'">'+esc(AX[i].curto)+'</button>').join('');
+ const sib=r.autor?REPS.filter(x=>x!==r&&x.autor===r.autor):[];
+ const sibs=sib.length?'<section class="sec"><h4>Mesmo autor em outro eixo</h4><div class="kw">'+sib.map(x=>'<button class="link" data-act="rep" data-id="'+x.id+'">'+esc(x.n2)+' ('+esc(AX[x.e].curto)+')</button>').join(' · ')+'</div></section>':'';
+ const fam=r.fam==='cf'?'<section class="sec"><h4>Mesma fonte em todos os eixos</h4><p>A Constituição aparece como primeiro repertório dos nove eixos. Troque o artigo conforme o tema e explique o que ele garante antes de apontar a contradição.</p></section>':'';
+ return '<div class="reveal-bar"><button class="btn pri" data-act="reveal" data-id="'+r.id+'">Mostrar explicação</button><span>Modo revisão: tente lembrar antes de abrir.</span></div>'+
+ '<div class="sections">'+
+ '<section class="sec"><h4>Contextualização <em>conteúdo da fonte</em></h4><p>'+esc(r.orig)+'</p>'+(r.nota?'<p class="nota"><b>Atenção:</b> '+esc(r.nota)+'</p>':'')+'</section>'+
+ '<section class="sec"><h4>Aplicabilidade <em>problemas em que pode ser usado</em></h4><p>'+esc(r.usar)+'</p></section>'+
+ '<section class="sec app"><h4>Aplicação na redação <em>exemplo ilustrativo, sem citação direta</em></h4><p class="ex">'+esc(r.redacao)+'</p></section>'+
+ '<section class="sec"><h4>Palavras-chave</h4><div class="kw">'+r.chaves.map(k=>'<span class="chip sm kw">'+esc(k)+'</span>').join('')+'</div></section>'+
+ (others?'<section class="sec"><h4>Pode servir também em <em>sugestão de estudo</em></h4><div class="kw">'+others+'</div></section>':'')+
+ sibs+fam+
+ '</div>'+
+ '<div class="card-foot"><button class="btn done-btn" data-act="done" data-id="'+r.id+'" aria-pressed="false">Marcar como dominado</button></div>';
+}
+function buildCards(){
+ $('#cardsroot').innerHTML=AXES.map(a=>{
+  const reps=REPS.filter(r=>r.e===a.id);
+  return '<section class="grp" data-axis="'+a.id+'"><div class="grp-h"><h3>'+esc(a.nome)+'</h3><span class="p" data-gprog="'+a.id+'"></span></div><div class="cards">'+
+   reps.map(r=>'<article class="card rcard'+(r.t==='jur'?' jur':'')+'" data-id="'+r.id+'">'+
+    '<button class="card-head" data-act="card" data-id="'+r.id+'" aria-expanded="false"><span class="ch-main"><span class="ch-name">'+esc(r.nome)+'</span><span class="ch-sub">'+areaTags(r)+'</span></span>'+ICON.chev+'</button>'+
+    '<div class="panel" hidden>'+cardBody(r)+'</div></article>').join('')+'</div></section>';
+ }).join('');
+}
+function toggleCard(id,force){
+ const c=$('.card[data-id="'+id+'"]');if(!c)return;
+ const open=force===undefined?!c.classList.contains('open'):force;
+ c.classList.toggle('open',open);
+ $('.panel',c).hidden=!open;
+ $('.card-head',c).setAttribute('aria-expanded',open?'true':'false');
+}
+
+/* ----- Gaveta ----- */
+function openDrawer(id){
+ const r=BY[id];if(!r)return;
+ state.drawer=id;
+ if(!state.lastFocus||!$('#drawer').classList.contains('on'))state.lastFocus=document.activeElement;
+ const sib=REPS.filter(x=>x.e===r.e),i=sib.indexOf(r);
+ const prev=sib[(i+3)%4],next=sib[(i+1)%4];
+ $('#sheetAx').textContent=AX[r.e].nome;
+ $('#sheet').classList.toggle('jur',r.t==='jur');
+ $('#sheetBody').innerHTML='<div class="rcard'+(state.revealed.has(id)?' revealed':'')+'" data-id="'+id+'"><h3 id="sheetTitle">'+esc(r.nome)+'</h3><div class="sheet-meta">'+areaTags(r)+'</div>'+cardBody(r)+
+  '<div class="sheet-nav"><button class="btn" data-act="rep" data-id="'+prev.id+'">← '+esc(prev.n1+(prev.n2?' · '+prev.n2:''))+'</button><button class="btn" data-act="rep" data-id="'+next.id+'">'+esc(next.n1+(next.n2?' · '+next.n2:''))+' →</button></div></div>';
+ $('#drawer').classList.add('on');$('#drawer').setAttribute('aria-hidden','false');
+ $('#sheet').scrollTop=0;
+ updateProgress();
+ $('#drawerClose').focus();
+}
+function closeDrawer(){
+ if(!$('#drawer').classList.contains('on'))return;
+ $('#drawer').classList.remove('on');$('#drawer').setAttribute('aria-hidden','true');state.drawer=null;
+ const f=state.lastFocus;state.lastFocus=null;if(f&&f.focus&&document.contains(f)){try{f.focus()}catch(e){}}
+}
+
+/* ----- Filtros ----- */
+function matchRep(r){
+ if(state.axis&&r.e!==state.axis)return false;
+ if(state.focus&&state.focus.ids.indexOf(r.id)<0)return false;
+ const t=norm(state.q).split(/\s+/).filter(Boolean);
+ return t.every(w=>r.idx.indexOf(w)>=0);
+}
+function applyFilters(expand){
+ const filtering=!!(state.q.trim()||state.focus);
+ let n=0;const hits={};
+ REPS.forEach(r=>{r._m=matchRep(r);if(r._m){n++;hits[r.e]=(hits[r.e]||0)+1}});
+ $$('.br').forEach(b=>{
+  const a=+b.dataset.axis;
+  b.classList.toggle('off',!!state.axis&&a!==state.axis);
+  b.classList.toggle('dim',filtering&&!hits[a]);
+  if(expand){
+   if(filtering)setBranch(b,!!hits[a]);
+   else if(state.axis&&a===state.axis)setBranch(b,true);
+  }
+ });
+ $$('.rep').forEach(b=>b.classList.toggle('dim',filtering&&!BY[b.dataset.id]._m));
+ $$('.grp').forEach(g=>{const a=+g.dataset.axis;g.hidden=(!!state.axis&&a!==state.axis)||(filtering&&!hits[a])});
+ $$('.card').forEach(c=>{c.hidden=filtering&&!BY[c.dataset.id]._m});
+ $('#empty-map').hidden=n>0;$('#empty-cards').hidden=n>0;
+ $('#mm').hidden=n===0;
+ const active=filtering||!!state.axis;
+ $('#count').textContent=active?n+' de 36 repertórios':'36 repertórios · 9 eixos';
+ $('#clearbtn').hidden=!active;
+ $$('#axchips .chip').forEach(c=>c.classList.toggle('on',+c.dataset.axis===state.axis));
+ $('#focuschip').innerHTML=state.focus?'<span class="chip on focus-chip">Foco: '+esc(state.focus.l)+' <button class="link" style="color:inherit" data-act="unfocus" aria-label="Remover foco">×</button></span>':'';
+}
+function buildChips(){
+ $('#axchips').innerHTML='<button class="chip on" data-act="axisf" data-axis="0">Todos</button>'+AXES.map(a=>'<button class="chip" data-act="axisf" data-axis="'+a.id+'">'+esc(a.curto)+'</button>').join('');
+}
+function setAxis(i){state.axis=state.axis===i?0:i;applyFilters(true)}
+function clearAll(){state.q='';state.axis=0;state.focus=null;$('#q').value='';applyFilters(false)}
+function syncToggles(){
+ $('#tg-multi').setAttribute('aria-pressed',state.multi);
+ $('#tg-review').setAttribute('aria-pressed',state.review);
+ $('#mm').classList.toggle('show-multi',state.multi);
+ document.body.classList.toggle('review',state.review);
+}
+
+/* ----- Progresso ----- */
+function updateProgress(){
+ $('#hprog').textContent=state.done.size+'/36 dominados';
+ AXES.forEach(a=>{
+  const n=REPS.filter(r=>r.e===a.id&&state.done.has(r.id)).length;
+  const el=$('[data-prog="'+a.id+'"]');if(el)el.textContent=n+'/4';
+  const g=$('[data-gprog="'+a.id+'"]');if(g)g.textContent=n+'/4 dominados';
+ });
+ $$('.rep').forEach(b=>b.classList.toggle('done',state.done.has(b.dataset.id)));
+ $$('.done-btn').forEach(b=>{const d=state.done.has(b.dataset.id);b.setAttribute('aria-pressed',d);b.textContent=d?'Dominado':'Marcar como dominado'});
+ $$('.rcard').forEach(c=>c.classList.toggle('revealed',state.revealed.has(c.dataset.id)));
+ if(state.tab==='treino'&&TR.mode==='prog')renderTreino();
+}
+
+/* ----- Abas ----- */
+const TABS=['mapa','cartoes','guia','treino'];
+function setTab(t,push){
+ if(TABS.indexOf(t)<0)t='mapa';
+ state.tab=t;
+ TABS.forEach(x=>{$('#v-'+x).hidden=x!==t;const b=$('#tab-'+x);b.setAttribute('aria-selected',x===t);b.classList.toggle('on',x===t)});
+ $('#tools').hidden=!(t==='mapa'||t==='cartoes');
+ if(push!==false){try{if(location.hash!=='#'+t)location.hash=t}catch(e){}}
+ if(t==='treino')renderTreino();
+ closeDrawer();
+ window.scrollTo(0,0);
+ onScroll();
+}
+function goCore(){
+ if(state.tab!=='mapa')setTab('mapa');
+ requestAnimationFrame(()=>{$('#core').scrollIntoView({behavior:reduce()?'auto':'smooth',block:'start'})});
+}
+function onScroll(){
+ const show=(state.tab==='mapa'||state.tab==='cartoes')&&window.scrollY>420;
+ $('#fab').classList.toggle('on',show);
+}
+
+/* ----- Prioridade ----- */
+function buildPrio(){
+ $('#priogrid').innerHTML=TOP10.map((p,i)=>'<button class="pr" data-act="focus" data-i="'+i+'"><b><i>'+String(i+1).padStart(2,'0')+'</i>'+esc(p.l)+'</b><span>'+esc(p.s)+'</span></button>').join('');
+}
+
+/* ========= TREINAMENTO ========= */
+const TR={mode:'quiz',q:null,answered:false,score:{quiz:[0,0],assoc:[0,0],apply:[0,0]},fc:null,fcAxis:0,confirm:false,lastTheme:-1};
+const MODES=[['quiz','Quiz de autores e obras'],['assoc','Repertório e eixo'],['apply','Aplicação a temas'],['fc','Revisão'],['prog','Progresso']];
+const lab=r=>r.n1+' — '+r.n2;
+
+function qQuiz(){
+ const k=['a','b','c'][Math.floor(Math.random()*3)];
+ const pool=REPS.filter(r=>r.autor&&r.obra);
+ if(k==='c'){
+  const r=pick(REPS,1)[0];
+  const others=pick(REPS.filter(x=>x!==r&&x.e!==r.e&&lab(x)!==lab(r)),3);
+  return {kind:'Quiz · Identificação',text:'Qual repertório corresponde a esta descrição?',clue:r.orig,opts:shuffle([{t:lab(r),ok:true}].concat(others.map(o=>({t:lab(o),ok:false})))),exp:r.nome+'. Eixo: '+AX[r.e].curto+'.'};
+ }
+ const r=pick(pool,1)[0];
+ if(k==='a'){
+  const au=Array.from(new Set(pool.map(x=>x.autor))).filter(a=>a!==r.autor);
+  return {kind:'Quiz · Autor',text:'Quem é o autor ou formulador de “'+r.obra+'”?',clue:'',opts:shuffle([{t:r.autor,ok:true}].concat(pick(au,3).map(a=>({t:a,ok:false})))),exp:r.autor+' — '+r.obra+'. Eixo: '+AX[r.e].curto+'.'};
+ }
+ const ob=pool.filter(x=>x.autor!==r.autor);
+ return {kind:'Quiz · Obra',text:'Qual destes repertórios está associado a '+r.autor+'?',clue:'',opts:shuffle([{t:r.obra,ok:true}].concat(pick(ob,3).map(x=>({t:x.obra,ok:false})))),exp:r.autor+' — '+r.obra+'. Eixo: '+AX[r.e].curto+'.'};
+}
+function qAssoc(){
+ const r=pick(REPS,1)[0];
+ const ax=pick(AXES.filter(a=>a.id!==r.e),3);
+ const more=r.outros.length?' Também pode servir em: '+r.outros.map(i=>AX[i].curto).join(', ')+'.':'';
+ return {kind:'Associação · Eixo',text:'Em qual eixo temático você usaria este repertório em primeiro lugar?',clue:r.nome,opts:shuffle([{t:AX[r.e].nome,ok:true}].concat(ax.map(a=>({t:a.nome,ok:false})))),exp:'Neste atlas, ele está no eixo '+AX[r.e].nome+'.'+more};
+}
+function qApply(){
+ let i;do{i=Math.floor(Math.random()*THEMES.length)}while(i===TR.lastTheme&&THEMES.length>1);
+ TR.lastTheme=i;const t=THEMES[i],r=BY[t.ok];
+ return {kind:'Aplicação · Tema hipotético',text:'Qual repertório fundamenta melhor este tema?',clue:t.t,opts:shuffle([{t:r.nome,ok:true}].concat(t.bad.map(b=>({t:BY[b].nome,ok:false})))),exp:t.p,model:r.redacao};
+}
+function newQ(){
+ const m=TR.mode;TR.answered=false;
+ TR.q=m==='quiz'?qQuiz():m==='assoc'?qAssoc():qApply();
+}
+function qHTML(){
+ const q=TR.q,sc=TR.score[TR.mode];
+ return '<div class="panelx"><p class="q-kind">'+esc(q.kind)+'</p><h3 class="q-text">'+esc(q.text)+'</h3>'+
+ (q.clue?'<p class="clue">'+esc(q.clue)+'</p>':'')+
+ '<div class="opts">'+q.opts.map((o,i)=>'<button class="opt" data-act="ans" data-k="'+i+'">'+esc(o.t)+'</button>').join('')+'</div>'+
+ '<div class="fb" id="fb" hidden></div>'+
+ '<div class="q-foot"><span id="sc">Acertos: '+sc[0]+' de '+sc[1]+'</span><button class="btn pri" id="nextq" data-act="nextq" hidden>Próxima</button></div></div>';
+}
+function answer(k){
+ if(TR.answered)return;TR.answered=true;
+ const q=TR.q,o=q.opts[k],sc=TR.score[TR.mode];
+ sc[1]++;if(o.ok)sc[0]++;
+ $$('.opt').forEach((b,i)=>{b.disabled=true;if(q.opts[i].ok)b.classList.add('ok');else if(i===k)b.classList.add('bad')});
+ const fb=$('#fb');fb.hidden=false;
+ fb.innerHTML='<span class="res '+(o.ok?'ok':'bad')+'">'+(o.ok?'Resposta correta.':'Não foi desta vez.')+'</span><span>'+esc(q.exp)+'</span>'+
+  (q.model?'<div class="sec app"><h4>Como conectar <em>exemplo ilustrativo</em></h4><p class="ex">'+esc(q.model)+'</p></div>':'');
+ $('#sc').textContent='Acertos: '+sc[0]+' de '+sc[1];
+ $('#nextq').hidden=false;$('#nextq').focus();
+}
+function startFc(){
+ const ids=shuffle(REPS.filter(r=>!TR.fcAxis||r.e===TR.fcAxis).map(r=>r.id));
+ TR.fc={deck:ids,i:0,shown:false,ok:0,review:0};
+}
+function fcHTML(){
+ const chips='<div class="chips" style="margin-bottom:12px"><button class="chip'+(TR.fcAxis?'':' on')+'" data-act="fcaxis" data-axis="0">Todos os eixos</button>'+AXES.map(a=>'<button class="chip'+(TR.fcAxis===a.id?' on':'')+'" data-act="fcaxis" data-axis="'+a.id+'">'+esc(a.curto)+'</button>').join('')+'</div>';
+ const f=TR.fc;
+ if(f.i>=f.deck.length){
+  return chips+'<div class="panelx"><p class="q-kind">Revisão concluída</p><h3 class="q-text">Você lembrou de '+f.ok+' de '+f.deck.length+' repertórios.</h3><p>'+(f.review?f.review+' ficaram para revisar. ':'')+'Os lembrados foram marcados como dominados.</p><div class="fc-actions" style="justify-content:flex-start"><button class="btn pri" data-act="fcrestart">Revisar de novo</button></div></div>';
+ }
+ const r=BY[f.deck[f.i]];
+ let h=chips+'<div class="panelx rcard revealed"><div class="fc-front"><p class="fc-ax">'+esc(AX[r.e].nome)+'</p><div class="n1">'+esc(r.n1)+'</div><div class="n2">'+esc(r.n2)+'</div></div>';
+ if(!f.shown){
+  h+='<p style="text-align:center;color:var(--muted);font-size:13.5px">Tente lembrar o que é, para que serve e como aplicar. Depois confira.</p><div class="fc-actions"><button class="btn pri" data-act="fcshow">Mostrar explicação</button></div>';
+ }else{
+  h+='<div class="sections"><section class="sec"><h4>Contextualização</h4><p>'+esc(r.orig)+'</p></section><section class="sec"><h4>Aplicabilidade</h4><p>'+esc(r.usar)+'</p></section><section class="sec"><h4>Palavras-chave</h4><div class="kw">'+r.chaves.map(k=>'<span class="chip sm kw">'+esc(k)+'</span>').join('')+'</div></section></div>'+
+   '<div class="fc-actions"><button class="btn pri" data-act="fcyes">Lembrei</button><button class="btn" data-act="fcno">Revisar depois</button></div>';
+ }
+ return h+'<div class="q-foot"><span>Cartão '+(f.i+1)+' de '+f.deck.length+'</span><span>Lembrados: '+f.ok+'</span></div></div>';
+}
+function progHTML(){
+ const tot=state.done.size;
+ const bars=AXES.map(a=>{const n=REPS.filter(r=>r.e===a.id&&state.done.has(r.id)).length;return '<div class="bar-row"><span>'+esc(a.nome)+'</span><b>'+n+'/4</b><div class="bar" role="progressbar" aria-valuemin="0" aria-valuemax="4" aria-valuenow="'+n+'" aria-label="'+esc(a.nome)+'"><i style="width:'+(n*25)+'%"></i></div></div>'}).join('');
+ const sc=TR.score;
+ return '<div class="panelx"><div class="tot">'+tot+'<small>de 36 repertórios dominados</small></div><div class="bars">'+bars+'</div>'+
+ '<p style="margin-top:16px;font-size:13.5px;color:var(--muted)">Nesta sessão: quiz '+sc.quiz[0]+'/'+sc.quiz[1]+', associação '+sc.assoc[0]+'/'+sc.assoc[1]+', aplicação '+sc.apply[0]+'/'+sc.apply[1]+'. Marque um repertório como dominado no cartão ou na Revisão.</p>'+
+ '<div class="fc-actions" style="justify-content:flex-start;margin-top:14px">'+(TR.confirm?'<span style="font-size:13.5px">Apagar todo o progresso?</span><button class="btn pri" data-act="resetyes">Sim, apagar</button><button class="btn" data-act="resetno">Cancelar</button>':'<button class="btn" data-act="reset">Zerar progresso</button>')+'</div></div>';
+}
+function renderTreino(){
+ $('#seg').innerHTML=MODES.map(m=>'<button class="chip'+(TR.mode===m[0]?' on':'')+'" data-act="tmode" data-m="'+m[0]+'">'+m[1]+'</button>').join('');
+ const b=$('#trbody');
+ if(TR.mode==='prog'){b.innerHTML=progHTML();return}
+ if(TR.mode==='fc'){if(!TR.fc)startFc();b.innerHTML=fcHTML();return}
+ if(!TR.q||TR.q.mode!==TR.mode){newQ();TR.q.mode=TR.mode}
+ b.innerHTML=qHTML();
+}
+
+/* ========= EVENTOS ========= */
+document.addEventListener('click',function(e){
+ const el=e.target.closest('[data-act]');if(!el)return;
+ const act=el.dataset.act,id=el.dataset.id;
+ switch(act){
+  case 'tab':setTab(el.dataset.tab);break;
+  case 'branch':{const b=el.closest('.br');setBranch(b,b.classList.contains('collapsed'));break}
+  case 'expandall':$$('.br').forEach(b=>setBranch(b,true));break;
+  case 'collapseall':$$('.br').forEach(b=>setBranch(b,false));break;
+  case 'core':case 'core2':goCore();break;
+  case 'rep':openDrawer(id);break;
+  case 'card':toggleCard(id);break;
+  case 'cardsopen':$$('.card').forEach(c=>{if(!c.hidden)toggleCard(c.dataset.id,true)});break;
+  case 'cardsclose':$$('.card').forEach(c=>toggleCard(c.dataset.id,false));break;
+  case 'done':if(state.done.has(id))state.done.delete(id);else state.done.add(id);save();updateProgress();break;
+  case 'reveal':state.revealed.add(id);updateProgress();break;
+  case 'multi':state.multi=!state.multi;save();syncToggles();break;
+  case 'review':state.review=!state.review;if(!state.review)state.revealed.clear();save();syncToggles();updateProgress();break;
+  case 'axisf':{const i=+el.dataset.axis;closeDrawer();if(state.tab!=='mapa'&&state.tab!=='cartoes')setTab('mapa');if(i===0){state.axis=0;applyFilters(false)}else{state.axis=i;applyFilters(true)}break}
+  case 'clear':clearAll();break;
+  case 'unfocus':state.focus=null;applyFilters(false);break;
+  case 'focus':{
+   const p=TOP10[+el.dataset.i];state.focus={l:p.l,ids:p.ids};state.axis=0;state.q='';$('#q').value='';
+   if(state.tab!=='mapa')setTab('mapa');
+   applyFilters(true);
+   requestAnimationFrame(()=>{$('#v-mapa').scrollIntoView({behavior:reduce()?'auto':'smooth',block:'start'})});
+   break}
+  case 'closedrawer':closeDrawer();break;
+  case 'tmode':TR.mode=el.dataset.m;TR.confirm=false;if(TR.mode==='fc'&&!TR.fc)startFc();renderTreino();break;
+  case 'ans':answer(+el.dataset.k);break;
+  case 'nextq':newQ();TR.q.mode=TR.mode;$('#trbody').innerHTML=qHTML();break;
+  case 'fcaxis':TR.fcAxis=+el.dataset.axis;startFc();renderTreino();break;
+  case 'fcrestart':startFc();renderTreino();break;
+  case 'fcshow':TR.fc.shown=true;renderTreino();break;
+  case 'fcyes':{const f=TR.fc;state.done.add(f.deck[f.i]);f.ok++;f.i++;f.shown=false;save();updateProgress();renderTreino();break}
+  case 'fcno':{const f=TR.fc;f.review++;f.i++;f.shown=false;renderTreino();break}
+  case 'reset':TR.confirm=true;renderTreino();break;
+  case 'resetno':TR.confirm=false;renderTreino();break;
+  case 'resetyes':state.done.clear();TR.confirm=false;save();updateProgress();renderTreino();break;
+ }
+});
+$('#q').addEventListener('input',function(e){state.q=e.target.value;applyFilters(true)});
+document.addEventListener('keydown',function(e){if(e.key==='Escape')closeDrawer()});
+window.addEventListener('scroll',onScroll,{passive:true});
+window.addEventListener('hashchange',function(){const t=location.hash.slice(1);if(TABS.indexOf(t)>=0&&t!==state.tab)setTab(t,false)});
+
+/* ========= INÍCIO ========= */
+load();
+buildChips();buildMap();buildCards();buildPrio();
+syncToggles();applyFilters(false);updateProgress();
+(function(){let t='mapa';try{t=location.hash.slice(1)||'mapa'}catch(e){}setTab(TABS.indexOf(t)>=0?t:'mapa',false)})();
+</script>
+
+</body></html>
